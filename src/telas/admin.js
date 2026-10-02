@@ -944,8 +944,12 @@ function telaPainel(senha, dados) {
     const L = window.L;
     if (mapa) { mapa.remove(); mapa = null; }
     mapa = L.map('mapa', { scrollWheelZoom: true }).setView([40.15, -8.86], 12);
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-      maxZoom: 19, attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
+    // O OpenStreetMap exige saber de que site vem cada pedido (regra de uso dos
+    // mapas deles) e bloqueia quem não o diz: por isso o referrerPolicy aqui e
+    // o Referrer-Policy do vercel.json não podem cortar a origem.
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      maxZoom: 19, referrerPolicy: 'strict-origin-when-cross-origin',
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>',
     }).addTo(mapa);
 
     // Regiões pintadas: uma mancha que cobre as famílias de cada região (o
