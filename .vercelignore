@@ -1,0 +1,9 @@
+# Nunca enviar para a Vercel: dados pessoais, segredos e ferramentas locais.
+.censo-memoria.json
+*.json.bak
+.env
+.env.*
+testes/
+servidor-local.js
+node_modules/
+README.md

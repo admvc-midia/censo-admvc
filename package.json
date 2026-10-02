@@ -1,0 +1,14 @@
+{
+  "name": "censo-admvc",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Censo da Família ADMVC — QR no telão, telemóvel primeiro, cadastro da família e painel da equipa.",
+  "scripts": {
+    "dev": "node servidor-local.js",
+    "dev:memoria": "node -e \"process.env.CENSO_MEMORIA='1';require('./servidor-local.js')\"",
+    "test": "node --test testes/*.test.js"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
